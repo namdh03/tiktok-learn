@@ -41,6 +41,14 @@ function Search() {
         setLoading(true);
     }, [debounced]);
 
+    const handleSearch = (e) => {
+        const searchValue = e.target.value;
+
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
     const handleClear = () => {
         setSearchValue('');
         setSearchResult([]);
@@ -73,7 +81,7 @@ function Search() {
                     value={searchValue}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleSearch}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (
@@ -84,7 +92,7 @@ function Search() {
 
                 {loading && <LoadingIcon width="1.6rem" height="1.6rem" className={cx('loading')}></LoadingIcon>}
 
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                     <SearchIcon />
                 </button>
             </div>
