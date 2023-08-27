@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import styles from './AccountItem.module.scss';
@@ -6,18 +7,18 @@ import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
-function AccountItem() {
+function AccountItem({ data }) {
     return (
-        <div className={cx('wrapper')}>
-            <Image src="" alt="Dương Hoàng Nam" className={cx('avatar')} />
+        <Link to={`/profile/${data.nickname}`} className={cx('wrapper')}>
+            <Image src={data.avatar} alt={data.full_name} className={cx('avatar')} />
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
-                    <span>Dương Hoàng Nam</span>
-                    <VerifyIcon width="1.4rem" height="1.4rem" className={cx('check')}></VerifyIcon>
+                    <span>{data.full_name}</span>
+                    {data.tick && <VerifyIcon width="1.4rem" height="1.4rem" className={cx('check')}></VerifyIcon>}
                 </h4>
-                <span className={cx('username')}>namdh03</span>
+                <span className={cx('username')}>{data.nickname}</span>
             </div>
-        </div>
+        </Link>
     );
 }
 
