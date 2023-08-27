@@ -9,9 +9,11 @@ import Menu from '~/components/Popper/Menu';
 import {
     CoinIcon,
     FeedbackHelpIcon,
+    InboxIcon,
     KeyboardIcon,
     LanguageIcon,
     LogoutIcon,
+    MessageIcon,
     MoreIcon,
     ProfileIcon,
     SettingIcon,
@@ -106,6 +108,19 @@ function Header() {
                             <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                                 <button className={cx('action-button')}>
                                     <UploadIcon width="3.2rem" height="3.2rem"></UploadIcon>
+                                </button>
+                            </Tippy>
+
+                            <Tippy delay={[0, 200]} content="Messages" placement="bottom">
+                                <button className={cx('action-button')}>
+                                    <MessageIcon width="2.6rem" height="2.6rem"></MessageIcon>
+                                </button>
+                            </Tippy>
+
+                            <Tippy delay={[0, 200]} content="Messages" placement="bottom">
+                                <button className={cx('action-button')}>
+                                    <InboxIcon width="3.2rem" height="3.2rem"></InboxIcon>
+                                    <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
                         </>
